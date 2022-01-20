@@ -1,0 +1,24 @@
+{
+  "__suggestion__": {
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "search.showLineNumbers": true,
+    "workbench.editor.labelFormat": "short"
+  },
+  "editor.renderControlCharacters": true,
+  "files.eol": "\n",
+  "files.trimFinalNewLines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "[bat]": {
+    "files.eol": "\r\n"
+  },
+  "[javascript]": {
+    "files.insertFinalNewline": true
+  },
+  "[typescript]": {
+    "files.insertFinalNewline": true
+  }
+}
