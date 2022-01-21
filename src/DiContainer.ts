@@ -16,6 +16,7 @@ export default class DiContainer {
         private readonly config: DiContainerConfig = undefined,
     ) {
         this.config = DiContainerConfig.defaultFilled(config);
+        this.configTable = new Map();
         this.singletonInstances = new Map();
         this.scopedInstances = new Map();
     }
@@ -35,7 +36,7 @@ export default class DiContainer {
         return this.singletonInstances.get(key) ?? this.scopedInstances.get(key)
     }
 
-    public resolve<T = any>(key: DiKey): T {
+    public resolve<T = any>(key: DiKey<T>): T {
         return this._resolve(key, []);
     }
 
@@ -80,7 +81,7 @@ export default class DiContainer {
         if (!DiConfig.Provision.validate(config.provision)) {
             throw new Error(`[InvalidConfig] Provision config is invalid. class: ${type.name}`);
         }
-        for (const k of definition.provision.keys.filter(n => this.configTable.has(n))) {
+        for (const k of config.provision.keys.filter(n => this.configTable.has(n))) {
             throw new Error(`[Conflict] Key is already used. key: ${DiKey.stringify(k)}, class: ${type.name}`);
         }
 
@@ -137,5 +138,6 @@ export default class DiContainer {
         }
 
         creating.pop();
+        return instance;
     }
 }

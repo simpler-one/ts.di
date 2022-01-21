@@ -11,16 +11,13 @@ interface DiConfig {
 
 namespace DiConfig {
 
-    export function merge(type: Class, base: DiConfig | undefined, override: DiConfig): DiConfig {
+    export function merge(type: Class, base: DiConfig, override: DiConfig): DiConfig {
         return {
-            provision: Provision.merge(type, base?.provision ?? {}, override.provision),
+            provision: Provision.merge(type, base?.provision ?? {}, override.provision ?? {}),
             dependency: Dependency.merge(base.dependency ?? {} as Dependency, override.dependency ?? {} as Dependency),
         };
     }
 
-
-    //
-    // Provision
 
     export interface Provision {
         keys?: DiKey[];
@@ -53,7 +50,7 @@ namespace DiConfig {
         export function merge(type: Class, base: Provision, override: Provision): Provision {
             return {
                 keys: override.keys ?? base.keys ?? [type, type.name],
-                factory: override.factory ?? base.factory ?? ((params) => new type(...params)),
+                factory: override.factory ?? base.factory ?? ((...params) => new type(...params)),
                 lifetime: override.lifetime ?? base.lifetime,
             };
         }

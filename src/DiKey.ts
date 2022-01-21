@@ -1,6 +1,6 @@
 import Class from "./Class";
 
-type DiKey = symbol | string | Class;
+type DiKey<T = any> = symbol | string | Class<T>;
 
 namespace DiKey {
     export function stringify(key: DiKey): string {

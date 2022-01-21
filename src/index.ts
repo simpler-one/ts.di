@@ -1,4 +1,5 @@
 import Class from "./Class";
+import DiContainer from "./DiContainer";
 import DiDefiner from "./DiDefiner";
 import DiKey from "./DiKey";
 
@@ -23,6 +24,8 @@ namespace DI {
     export function depends(type: Class, init: DiKey[], props?: { [key: string]: DiKey }): void {
         DiDefiner.depends(type, init, props);
     }
+
+    export const Container = DiContainer;
 }
 
 export default DI;

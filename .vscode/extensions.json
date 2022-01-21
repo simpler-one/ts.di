@@ -1,5 +1,5 @@
 {
-    "recommendations": {
+    "recommendations": [
         "formulahendry.auto-close-tag",
         "formulahendry.auto-rename-tag",
         "dbaeumer.vscode-eslint",
@@ -7,5 +7,5 @@
         "eamodio.gitlens",
         "mhutchie.git-graph",
         "jebbs.plantuml"
-    }
+    ]
 }

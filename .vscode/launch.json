@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "Run by ts-node",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**","node_modules/**"],
+            "runtimeArgs": ["--experimental-loader=ts-node/esm", "--es-module-specifier-resolution=node", "--nolazy"],
+            "program": "${file}"
+        }
+    ]
+}
